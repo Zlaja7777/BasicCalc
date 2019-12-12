@@ -75,6 +75,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print("Test github")
         
     }
     
@@ -88,6 +89,7 @@ class ViewController: UIViewController {
         else if odabranaOperacija == "+" {
             Prikaz.text = String(PrviBroj! + DrugiBroj!)
         }
+        
 
         else if odabranaOperacija == "/" {
             Prikaz.text = String (PrviBroj! / DrugiBroj!)
