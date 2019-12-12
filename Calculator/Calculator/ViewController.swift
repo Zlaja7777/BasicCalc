@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     
     func ProvjeraBroja() -> Bool{
         if (Prikaz.text == "0" || OperacijaPressed == true ) {
-            
             return true;
         }
         return false;
@@ -40,17 +39,16 @@ class ViewController: UIViewController {
   
     
     @IBAction func Brojevi(_ sender: UIButton) {
-        if ProvjeraBroja()
-        {
+        if ProvjeraBroja(){
             Prikaz.text = String(sender.tag)
         }
-        else
-        {
+        else{
             Prikaz.text = Prikaz.text! + String(sender.tag);
         }
         ProvjeraOperacije()
     }
     @IBAction func Operacije(_ sender: UIButton) {
+        
         OperacijaPressed = true;
         primarna = sender.backgroundColor;
         sender.backgroundColor = UIColor.darkGray;
@@ -70,38 +68,30 @@ class ViewController: UIViewController {
         Operacija = sender;
     }
     
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        print("Test github2")
-        
-    }
-    func TestZaGithub() {
-        print("Novi test za github");
-    }
     @IBAction func Result(_ sender: UIButton) {
    
-       
-        if odabranaOperacija == "-" {
-            
+        switch odabranaOperacija {
+        case "-":
             Prikaz.text = String(PrviBroj! - DrugiBroj!)
-        }
-        else if odabranaOperacija == "+" {
+        case "+":
             Prikaz.text = String(PrviBroj! + DrugiBroj!)
+        case "/":
+            Prikaz.text = String (PrviBroj! / DrugiBroj!)
+        case "x":
+            Prikaz.text = String (PrviBroj! * DrugiBroj!)
+        default:
+            odabranaOperacija = "N/A"
         }
         
-
-        else if odabranaOperacija == "/" {
-            Prikaz.text = String (PrviBroj! / DrugiBroj!)
-        }
-        else{
-            Prikaz.text = String (PrviBroj! * DrugiBroj!)
-        }
         OperacijaPressed = false;
         Operacija.backgroundColor = primarna;
     }
+    
+    override func viewDidLoad() {
+           super.viewDidLoad()
+           // Do any additional setup after loading the view.
+           
+       }
     
 }
 
