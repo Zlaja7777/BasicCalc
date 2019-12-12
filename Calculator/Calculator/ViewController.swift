@@ -13,8 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet var Prikaz: UILabel!
     var primarna: UIColor!;
     var OperacijaPressed: Bool = false;
-    var PrviBroj: Float? = nil;
-    var DrugiBroj: Float? = nil;
+    var PrviBroj: Int? = nil;
+    var DrugiBroj: Int? = nil;
     var odabranaOperacija: String = "";
     
     
@@ -26,10 +26,10 @@ class ViewController: UIViewController {
     }
     func ProvjeraOperacije() {
        if OperacijaPressed == false {
-            PrviBroj = Float(Prikaz.text!);
+            PrviBroj = Int(Prikaz.text!);
        }
        else{
-            DrugiBroj = Float(Prikaz.text!);
+            DrugiBroj = Int(Prikaz.text!);
         }
     }
     @IBAction func Ocisti(_ sender: Any) {
@@ -76,21 +76,32 @@ class ViewController: UIViewController {
         case "+":
             Prikaz.text = String(PrviBroj! + DrugiBroj!)
         case "/":
-            Prikaz.text = String (PrviBroj! / DrugiBroj!)
+            if ProvjeraZareza(num1: PrviBroj!, num2: DrugiBroj!){
+                Prikaz.text = String(Float(PrviBroj!) / Float(DrugiBroj!));
+            }
+            else {
+                Prikaz.text = String(PrviBroj! / DrugiBroj!);
+            }
         case "x":
-            Prikaz.text = String (PrviBroj! * DrugiBroj!)
+            Prikaz.text = String(PrviBroj! * DrugiBroj!)
         default:
             odabranaOperacija = "N/A"
         }
-        
         OperacijaPressed = false;
         Operacija.backgroundColor = primarna;
     }
-    
+    func ProvjeraZareza(num1: Int, num2: Int)-> Bool{
+        let rezultat: Float  = Float(num1) / Float(num2)
+        if (rezultat - floor(rezultat) > 0){
+            return true;
+        }
+        return false
+    }
+     
     override func viewDidLoad() {
            super.viewDidLoad()
            // Do any additional setup after loading the view.
-           
+        
        }
     
 }
