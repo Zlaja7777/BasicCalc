@@ -75,10 +75,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        print("Test github")
+        print("Test github2")
         
     }
-    
+    func TestZaGithub() {
+        print("Novi test za github");
+    }
     @IBAction func Result(_ sender: UIButton) {
    
        
